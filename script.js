@@ -1,8 +1,7 @@
 // script.js
 
 
-
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Initialize a context for the canvas
     var canvas = document.getElementById("Graph");
     var ctx = canvas.getContext("2d");
@@ -10,8 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
     // Get the input element by its ID
     var inputCoffee = document.getElementById("coffeeAmount");
 
-    // Get the value of the input element
-    var inputCoffeeValue = inputCoffee.value;
+    // Get the input element by its ID
+    var inputTime = document.getElementById("currentTime");
+
+
 
     // Initial dummy data
     var data = {
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Create the chart
     var dummyGraph = new Chart(ctx, {
-        type: "line", // Bar chart type
+        type: "line", // Line chart type
         data: data,
         options: {
             scales: {
@@ -38,77 +39,77 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Function to update the graph with new data
-    function updateGraph() {
-        // Generate new dummy data (random numbers)
-        var newData = data.datasets[0].data.map(function() {
-            return Math.floor(Math.random() * 50);
-        });
+    // Function to generate half life values
+    function generateHalvedValues(inputCoffee, numValues) {
+        const values = [inputCoffee];
 
-        // Update the graph's data
-        dummyGraph.data.datasets[0].data = newData;
+        for (let i = 1; i < numValues; i++) {
+            const halvedValue = values[i - 1] / 2;
+            values.push(halvedValue);
+        }
+
+        return values;
+    }
+
+
+    // Function to generate labels based on user input time
+    function generateLabels(userInputTime, numLabels) {
+        // Convert the user input time (e.g., "7:30am") to a Date object
+        const userInputDate = new Date(`2023-01-01T${userInputTime}`);
+
+        // Initialize an array to store the labels
+        const labels = [];
+
+        // Add the user's input time as the first label
+        const formattedLabel = `${userInputDate.getHours()}:${userInputDate.getMinutes()}${userInputDate.getHours() >= 12 ? 'pm' : 'am'}`;
+        labels.push(formattedLabel);
+
+        // Loop to generate the rest of the labels
+        for (let i = 1; i < numLabels; i++) {
+            // Increment the date by 4 hours
+            userInputDate.setHours(userInputDate.getHours() + 4);
+
+            // Format the label including minutes
+            const formattedLabel = `${userInputDate.getHours()}:${userInputDate.getMinutes()}${userInputDate.getHours() >= 12 ? 'pm' : 'am'}`;
+
+            labels.push(formattedLabel);
+        }
+
+        return labels;
+    }
+
+
+    // Function to update the labels in the chart
+    function updateLabels(inputTime) {
+        // Generate new labels based on the user input time
+        const newLabels = generateLabels(inputTime, data.labels.length);
+        console.log(newLabels.values);
+
+        // Update the chart's dataset with the new labels
+        dummyGraph.data.labels = newLabels;
 
         // Update the chart
         dummyGraph.update();
     }
+    // Example usage:
+    const numLabels = 5; // Number of labels to generate
+
 
     // Add event listener to the "Update Graph" button
     var updateGraphButton = document.getElementById("calculateButton");
-    updateGraphButton.addEventListener("click", updateGraph);
-});
+    updateGraphButton.addEventListener("click", function () {
+        var inputCoffeeValue = parseFloat(inputCoffee.value);
+        var inputTime = document.getElementById("currentTime"); // Get the input element by ID
+        var inputTimeValue = inputTime.value; // Get the user's input time here
 
+        // Update the graph's data
+        var customData = generateHalvedValues(inputCoffeeValue, data.labels.length);
+        dummyGraph.data.datasets[0].data = customData;
 
-/*
-document.addEventListener("DOMContentLoaded", function() {
-    // Get the canvas element
-    var canvas = document.getElementById("caffeineGraph");
+        // Call the function to update the labels based on the user input time
+        updateLabels(inputTimeValue);
 
-    // Create a chart on the canvas
-    var ctx = canvas.getContext("2d");
-    var caffeineChart = new Chart(ctx, {
-        type: "line", // Line chart
-        data: {
-            labels: [], // Array of time labels
-            datasets: [{
-                label: "Caffeine Level",
-                data: [], // Array of caffeine level data
-                borderColor: "rgba(75, 192, 192, 1)",
-                fill: false // No fill under the line
-            }]
-        },
-        options: {
-            responsive: true, // Make the chart responsive
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    type: "time",
-                    title: {
-                        display: true,
-                        text: "Time"
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: "Caffeine Level (mg)"
-                    }
-                }
-            }
-        }
+        // Update the chart
+        dummyGraph.update();
     });
-
-    // Function to update the chart data
-    function updateChart(timeLabels, caffeineLevels) {
-        caffeineChart.data.labels = timeLabels;
-        caffeineChart.data.datasets[0].data = caffeineLevels;
-        caffeineChart.update();
-    }
-
-    // Example data (you will calculate this with your algorithm)
-    var timeLabels = ["2023-10-20T08:00:00", "2023-10-20T09:00:00", "2023-10-20T10:00:00"];
-    var caffeineLevels = [200, 150, 100];
-
-    // Call the updateChart function with your data
-    updateChart(timeLabels, caffeineLevels);
 });
-*/
