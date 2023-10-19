@@ -1,16 +1,24 @@
 // script.js
 
+
+
 document.addEventListener("DOMContentLoaded", function() {
     // Initialize a context for the canvas
-    var canvas = document.getElementById("dummyGraph");
+    var canvas = document.getElementById("Graph");
     var ctx = canvas.getContext("2d");
+
+    // Get the input element by its ID
+    var inputCoffee = document.getElementById("coffeeAmount");
+
+    // Get the value of the input element
+    var inputCoffeeValue = inputCoffee.value;
 
     // Initial dummy data
     var data = {
-        labels: ["January", "February", "March", "April", "May"],
+        labels: ["2:00", "6:00", "10:00", "16:00", "20:00"],
         datasets: [{
             label: "Dummy Graph",
-            data: [10, 20, 30, 40, 50],
+            data: [30, 60, 90, 120, 150],
             backgroundColor: "rgba(75, 192, 192, 0.2)",
             borderColor: "rgba(75, 192, 192, 1)",
             borderWidth: 1,
