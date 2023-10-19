@@ -32,6 +32,20 @@ label {
     font-size: 16px;
 }
 
+.imagetext{
+    font-weight: bold;
+    font-size: 10px;
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+.imagetextbelow{
+    font-weight: bold;
+    font-size: 10px;
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
 input {
     padding: 12px;
     border: 1px solid #ccc;
@@ -41,7 +55,7 @@ input {
 }
 
 button {
-    background-color: #007bff;
+    background-color:#7187fd;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -53,7 +67,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #4C68FF;
 }
 
 .result-container {
@@ -78,16 +92,25 @@ button:hover {
     border-radius: 10px;
     box-shadow: 4px 4px 10px #9d9d9d, -4px -4px 10px #ffffff;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
 }
 
 .custom-div img {
-    width: 70%; /* Make the image width 100% of its parent */
-    height: 70%; /* Make the image height 100% of its parent */
-    object-fit: cover; /* This ensures the image covers the div without distortion */
+    width: 60%; /* Make the image width 100% of its parent */
+    height: 60%; /* Make the image height 100% of its parent */
+    object-fit: contain; /* This ensures the image covers the div without distortion */
 }
 
 /* Ensure that the last square doesn't have margin-right */
 .custom-div:last-child {
     margin-right: 0;
 }
+
+p{
+    text-align: right;
+}
+
 

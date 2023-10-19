@@ -16,27 +16,37 @@
             <input type="number" id="coffeeAmount" placeholder="Enter mg of coffee">
         </div>
         <div class="form-group">
-            <label for="currentTime">What time is it right now?</label>
+            <label for="currentTime">What time is it right now? (in AM or PM)</label>
             <input type="time" id="currentTime">
             <button id="calculateButton">Calculate</button>
         </div>
         <div class="neutral-div">
-            <div class="custom-div">Red Bull
+            <div class="custom-div"><label class="imagetext">250ml Red Bull</label>
                 <img src="images/Red Bull.png" alt="RedBull Can">
+                <label class="imagetextbelow">80 mg</label>
             </div>
-            <div class="custom-div">Espresso
+            <div class="custom-div"><label class="imagetext">30ml Espresso</label>
                 <img src="images/Espresso.png" alt="Espresso">
+                <label class="imagetextbelow">64 mg</label>
             </div>
-            <div class="custom-div">Cappoccino
+            <div class="custom-div"><label class="imagetext">150ml Cappucino</label>
                 <img src="images/Cappoccino.png" alt="Cappoccino">
+                <label class="imagetextbelow">65 mg</label>
             </div>
-            <div class="custom-div">Coca Cola
+            <div class="custom-div"><label class="imagetext">330 ml Coca Cola</label>
                 <img src="images/Cola.png" alt="Cola">
+                <label class="imagetextbelow">34 mg</label>
             </div>
         </div>
         <div class="result-container">
             <canvas id="Graph"></canvas>
             <!-- JavaScript-generated graph will be displayed here -->
+        </div>
+        <div class="neutral-div">
+            <label>The average person will feel some impact of caffeine at about 50 mg or above</label>
+        </div>
+        <div class="neutral-div">
+            <p>A little project by Furkan Tezkurul</p>
         </div>
     </div>
 </body>
