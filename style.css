@@ -62,3 +62,32 @@ button:hover {
     padding-top: 20px;
 }
 
+.neutral-div {
+    padding: 20px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.custom-div {
+    background: white;
+    width: 100px; /* Set a fixed width for the square */
+    height: 100px; /* Set a fixed height for the square */
+    margin-right: 10px; /* Add some space between squares */
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px #9d9d9d, -4px -4px 10px #ffffff;
+    text-align: center;
+}
+
+.custom-div img {
+    width: 70%; /* Make the image width 100% of its parent */
+    height: 70%; /* Make the image height 100% of its parent */
+    object-fit: cover; /* This ensures the image covers the div without distortion */
+}
+
+/* Ensure that the last square doesn't have margin-right */
+.custom-div:last-child {
+    margin-right: 0;
+}
+

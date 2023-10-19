@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var data = {
         labels: ["2:00", "6:00", "10:00", "16:00", "20:00"],
         datasets: [{
-            label: "Caffeine",
+            label: "Caffeine in mg",
             data: [30, 60, 90, 120, 150],
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            backgroundColor: "rgba(255, 44, 44, 0.8)",
             borderColor: "rgba(255, 44, 44, 0.8)",
             borderWidth: 1,
         }]
