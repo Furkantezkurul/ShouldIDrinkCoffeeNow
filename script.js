@@ -1,4 +1,56 @@
 // script.js
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize a context for the canvas
+    var canvas = document.getElementById("dummyGraph");
+    var ctx = canvas.getContext("2d");
+
+    // Initial dummy data
+    var data = {
+        labels: ["January", "February", "March", "April", "May"],
+        datasets: [{
+            label: "Dummy Graph",
+            data: [10, 20, 30, 40, 50],
+            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            borderColor: "rgba(75, 192, 192, 1)",
+            borderWidth: 1,
+        }]
+    };
+
+    // Create the chart
+    var dummyGraph = new Chart(ctx, {
+        type: "line", // Bar chart type
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Function to update the graph with new data
+    function updateGraph() {
+        // Generate new dummy data (random numbers)
+        var newData = data.datasets[0].data.map(function() {
+            return Math.floor(Math.random() * 50);
+        });
+
+        // Update the graph's data
+        dummyGraph.data.datasets[0].data = newData;
+
+        // Update the chart
+        dummyGraph.update();
+    }
+
+    // Add event listener to the "Update Graph" button
+    var updateGraphButton = document.getElementById("calculateButton");
+    updateGraphButton.addEventListener("click", updateGraph);
+});
+
+
+/*
 document.addEventListener("DOMContentLoaded", function() {
     // Get the canvas element
     var canvas = document.getElementById("caffeineGraph");
@@ -51,3 +103,4 @@ document.addEventListener("DOMContentLoaded", function() {
     // Call the updateChart function with your data
     updateChart(timeLabels, caffeineLevels);
 });
+*/
