@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Should I Drink Coffee Now?</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <header>
+    <div class="container">
         <h1>Should I Drink Coffee Now?</h1>
-    </header>
-    <main>
-        <!-- Your form and result display elements go here -->
-    </main>
-    <script src="script.js"></script>
+        <div class="form-group">
+            <label for="coffeeAmount">How much mg of coffee do you want to drink?</label>
+            <input type="number" id="coffeeAmount" placeholder="Enter mg of coffee">
+        </div>
+        <div class="form-group">
+            <label for="currentTime">What time is it right now?</label>
+            <input type="time" id="currentTime">
+        </div>
+        <button id="calculateButton">Calculate</button>
+        <div class="result-container">
+            <!-- JavaScript-generated graph will be displayed here -->
+        </div>
+    </div>
 </body>
 </html>
