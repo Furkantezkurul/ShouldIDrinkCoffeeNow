@@ -113,3 +113,36 @@ document.addEventListener("DOMContentLoaded", function () {
         dummyGraph.update();
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Get references to custom-div elements
+    const customDiv1 = document.querySelector(".custom-div.one");
+    const customDiv2 = document.querySelector(".custom-div.two");
+    const customDiv3 = document.querySelector(".custom-div.three");
+    const customDiv4 = document.querySelector(".custom-div.four");
+
+    const coffeeAmountInput = document.getElementById("coffeeAmount");
+
+    // Add click event listeners to custom-div elements
+    customDiv1.addEventListener("click", function () {
+        coffeeAmountInput.value = "80";
+    });
+
+    customDiv2.addEventListener("click", function () {
+        coffeeAmountInput.value = "64";
+    });
+
+    customDiv3.addEventListener("click", function () {
+        coffeeAmountInput.value = "65";
+    });
+
+    customDiv4.addEventListener("click", function () {
+        coffeeAmountInput.value = "34";
+    });
+});
+
+
+
+
+
+
